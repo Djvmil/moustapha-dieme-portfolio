@@ -17,7 +17,8 @@ npm start
 npm run build
 ```
 
-Le site de dev tourne sur `http://localhost:4200`.
+- **Développement local :** `http://localhost:4200`
+- **Production :** <https://moustapha-dieme.fr>
 
 ## Structure du projet
 ```text
