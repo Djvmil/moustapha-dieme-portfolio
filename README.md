@@ -2,6 +2,8 @@
 
 Portfolio Angular de Moustapha Dieme, orienté **Senior Android Developer**.
 
+**Domaine :** <https://moustapha-dieme.fr>
+
 ## Stack
 - Angular 21
 - Standalone components
