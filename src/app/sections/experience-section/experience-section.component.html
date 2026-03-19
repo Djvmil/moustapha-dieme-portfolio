@@ -1,0 +1,25 @@
+<section class="section" id="experience">
+  <div class="section-heading">
+    <p class="section-eyebrow">Expérience</p>
+    <h3>Des environnements variés, du mobile banking aux produits Android connectés au backend.</h3>
+  </div>
+
+  <div class="companies-grid">
+    @for (company of companies; track company.name) {
+      <article class="panel company-card glass-panel">
+        <div class="company-card__top">
+          <div class="company-logo">
+            <img [src]="company.logo" [alt]="company.logoAlt" [class]="company.logoClass" loading="lazy">
+          </div>
+          <div class="company-card__head">
+            <h4>{{ company.name }}</h4>
+            <a class="company-link" [href]="company.website" target="_blank" rel="noopener">
+              Voir le site
+            </a>
+          </div>
+        </div>
+        <p class="company-card__description">{{ company.description }}</p>
+      </article>
+    }
+  </div>
+</section>

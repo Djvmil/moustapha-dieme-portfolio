@@ -1,0 +1,28 @@
+<section class="section" id="projects">
+  <div class="section-heading">
+    <p class="section-eyebrow">Projets</p>
+    <h3>Quelques projets concrets sur lesquels j’ai réellement travaillé</h3>
+  </div>
+
+  <div class="projects-grid">
+    @for (project of projects; track project.title) {
+      <article class="panel project-card glass-panel">
+        <p class="card-kicker">{{ project.category }}</p>
+        <h4>{{ project.title }}</h4>
+        <p class="project-card__description">{{ project.description }}</p>
+        <p class="project-card__outcome">{{ project.outcome }}</p>
+        @if (project.linkUrl) {
+          <a class="project-link" [href]="project.linkUrl" target="_blank" rel="noopener">
+            <img class="project-link__icon" src="logos/play-store.svg" alt="Play Store" loading="lazy">
+            <span>{{ project.linkLabel }}</span>
+          </a>
+        }
+        <div class="tag-list">
+          @for (tech of project.stack; track tech) {
+            <span class="tag tag--soft">{{ tech }}</span>
+          }
+        </div>
+      </article>
+    }
+  </div>
+</section>

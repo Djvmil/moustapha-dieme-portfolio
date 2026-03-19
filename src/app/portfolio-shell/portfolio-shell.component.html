@@ -1,0 +1,35 @@
+<main class="page-shell">
+  <header class="topbar-shell">
+    <div class="topbar" [class.topbar--scrolled]="isScrolled">
+      <div class="brand-block">
+        <p class="brand">{{ data.profile.domain }}</p>
+        <span class="status-pill">{{ data.profile.badge }}</span>
+      </div>
+
+      <nav class="topbar__actions">
+        @for (item of data.navItems; track item.href) {
+          <a
+            class="mini-link"
+            [class.mini-link--active]="activeSection === item.id"
+            [attr.aria-current]="activeSection === item.id ? 'page' : null"
+            [href]="item.href"
+          >
+            {{ item.label }}
+          </a>
+        }
+      </nav>
+    </div>
+  </header>
+
+  <app-hero-section
+    [profile]="data.profile"
+    [heroChips]="data.heroChips"
+    [stats]="data.stats"
+  />
+
+  <app-about-section />
+  <app-expertise-section [services]="data.services" />
+  <app-experience-section [companies]="data.companies" />
+  <app-projects-section [projects]="data.projects" />
+  <app-contact-section [profile]="data.profile" />
+</main>

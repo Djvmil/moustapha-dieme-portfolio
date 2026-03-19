@@ -1,0 +1,82 @@
+<section class="hero-card">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Portfolio · Android · Produit</p>
+      <h1>
+        <span>{{ profile.firstName }}</span>
+        <span class="muted">{{ profile.lastName }}</span>
+      </h1>
+      <h2>{{ profile.role }}</h2>
+      <p class="hero-intro">{{ profile.intro }}</p>
+      <p class="hero-intro hero-intro--secondary">{{ profile.secondaryIntro }}</p>
+
+      <div class="hero-tags">
+        @for (item of heroChips; track item) {
+          <span class="tag">{{ item }}</span>
+        }
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn btn--primary" href="#projects">Voir mes projets</a>
+        <a class="btn btn--secondary" [href]="profile.linkedin" target="_blank" rel="noopener">
+          LinkedIn
+        </a>
+        <a class="btn btn--secondary" [href]="profile.github" target="_blank" rel="noopener">
+          GitHub
+        </a>
+      </div>
+
+      <div class="hero-proof">
+        <div class="proof-item">
+          <span class="proof-label">Actuellement</span>
+          <div class="proof-brand">
+            <img src="logos/fortuneo.png" alt="Logo Fortuneo" loading="lazy">
+            <strong>Fortuneo</strong>
+          </div>
+        </div>
+        <div class="proof-item">
+          <span class="proof-label">Secteurs</span>
+          <strong>Banking · AdTech · Apps métier</strong>
+        </div>
+      </div>
+    </div>
+
+    <aside class="hero-panel panel glass-panel">
+      <div class="hero-panel__top">
+        <div class="hero-panel__avatar hero-panel__avatar--image">
+          <img src="profile.jpeg" [alt]="profile.shortName" loading="lazy">
+        </div>
+        <div>
+          <p class="hero-panel__name">{{ profile.shortName }}</p>
+          <p class="hero-panel__meta">{{ profile.location }}</p>
+        </div>
+      </div>
+
+      <p class="hero-panel__text">{{ profile.tagline }}</p>
+
+      <div class="hero-stats">
+        @for (item of stats; track item.label) {
+          <article class="stat-card">
+            <strong>{{ item.value }}</strong>
+            <span>{{ item.label }}</span>
+          </article>
+        }
+      </div>
+
+      <div class="info-list">
+        <div class="info-row">
+          <span>Focus</span>
+          <strong>Android natif moderne</strong>
+        </div>
+        <div class="info-row">
+          <span>Stack favorite</span>
+          <strong>Kotlin · Compose · KMP / CMP</strong>
+        </div>
+        <div class="info-row">
+          <span>Backend fit</span>
+          <strong>Spring Boot · APIs · Microservices</strong>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
