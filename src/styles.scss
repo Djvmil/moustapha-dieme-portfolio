@@ -1,18 +1,41 @@
-html,
-body {
-  margin: 0;
-  min-height: 100%;
-  background: #090d16;
+/* Styles globaux pour corriger les problèmes d'affichage */
+
+/* 1. Correction de la superposition des titres de section */
+.section {
+  scroll-margin-top: 120px !important; /* Augmenté pour compenser la topbar sticky */
+  margin-top: 70px !important; /* Plus d'espace entre les sections */
 }
 
-body {
-  color: #f5f7fb;
+/* 2. Assurer que les titres ne sont pas cachés par la topbar */
+.section-heading h3 {
+  position: relative;
+  z-index: 1;
 }
 
-a,
-button,
-input,
-textarea,
-select {
-  font: inherit;
+/* 3. Espacement supplémentaire pour la première section après l'hero */
+app-hero-section + .section {
+  margin-top: 60px !important;
+}
+
+/* 4. Correction pour les écrans mobiles */
+@media (max-width: 680px) {
+  .section {
+    scroll-margin-top: 100px !important;
+    margin-top: 32px !important;
+  }
+  
+  app-hero-section + .section {
+    margin-top: 48px !important;
+  }
+}
+
+/* 5. Assurer que les ancres scrollent correctement */
+html {
+  scroll-padding-top: 120px;
+}
+
+@media (max-width: 680px) {
+  html {
+    scroll-padding-top: 100px;
+  }
 }
