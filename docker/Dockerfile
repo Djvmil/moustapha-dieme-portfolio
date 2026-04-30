@@ -1,36 +1,24 @@
-# Dockerfile pour moustapha-dieme-portfolio (Angular)
-# Build stage
-FROM node:20-alpine AS builder
+# Stage 1: Build
+FROM node:20-alpine AS build
 
 WORKDIR /app
 
-# Copie des fichiers de dépendances
-COPY package*.json ./
-
-# Installation des dépendances
+COPY package.json package-lock.json ./
 RUN npm ci
 
-# Copie du code source
 COPY . .
-
-# Build de production
 RUN npm run build
 
-# Production stage avec nginx
+# Stage 2: Production
 FROM nginx:alpine
 
-# Copie de la configuration nginx personnalisée
-COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
+COPY docker/nginx.conf /etc/nginx/nginx.conf
 
-# Copie des fichiers buildés depuis le stage builder
-COPY --from=builder /app/dist/moustapha-dieme-portfolio/browser /usr/share/nginx/html
+COPY --from=build /app/dist/moustapha-dieme-portfolio/browser /usr/share/nginx/html
 
-# Exposition du port
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://localhost/health || exit 1
+
 EXPOSE 80
 
-# Healthcheck
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD wget --quiet --tries=1 --spider http://localhost/health || exit 1
-
-# Démarrage de nginx
 CMD ["nginx", "-g", "daemon off;"]
